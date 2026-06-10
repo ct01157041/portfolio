@@ -1,0 +1,26 @@
+# secrets
+.env
+credentials.json
+token.json
+*.backup
+
+# python
+__pycache__/
+.venv/
+*.pyc
+
+# node
+node_modules/
+
+# local settings
+.claude/
+
+# large media
+*.mp4
+*.wav
+*.exe
+
+# cocos creator cache
+library/
+temp/
+profiles/
