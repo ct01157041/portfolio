@@ -254,6 +254,28 @@
       </div>
     </a>
 
+    <div class="card">
+      <h3>Java 桌面應用系統</h3>
+      <div class="en-title">Java Desktop App — Photo Editor & User Auth</div>
+      <p class="desc">以 Java Swing 開發的桌面應用程式，整合使用者登入／註冊系統（MySQL 資料庫）、影像編輯器（加字、縮放、儲存）與 GIF 動畫生成功能。</p>
+      <div class="tags">
+        <span class="tag">Java</span><span class="tag">Swing GUI</span><span class="tag">MySQL</span><span class="tag">JDBC</span><span class="tag">OpenCV</span>
+      </div>
+      <div class="block">
+        <div class="label">Highlights 亮點</div>
+        <ul>
+          <li>LoginForm／RegisterForm 串接 MySQL，使用 PreparedStatement 防 SQL Injection</li>
+          <li>PhotoEditor：上傳圖片、加文字浮水印、縮放、儲存</li>
+          <li>GIF 生成器：多張影像合成動態 GIF（AnimatedGifEncoder）</li>
+          <li>RemoveBackground：整合 OpenCV 影像處理進行背景移除</li>
+        </ul>
+      </div>
+      <div class="ai-block">
+        <div class="label">AI 協作方式 AI Collaboration</div>
+        <p>以 AI 加速 Swing 元件配置與 JDBC 連線模板的搭建，自行設計系統架構與資料庫 schema，並審查 SQL 查詢的安全性。</p>
+      </div>
+    </div>
+
     <a class="card" href="https://github.com/ct01157041/arena-game-demo" target="_blank" rel="noopener">
       <h3>競技場遊戲 Demo</h3>
       <div class="en-title">Arena Game Demo — Cocos Creator</div>
@@ -284,4 +306,32 @@
   <div class="method-grid">
     <div class="method-card">
       <div class="num">01</div>
-      <h4>定義問題<span class="en"
+      <h4>定義問題<span class="en">Define</span></h4>
+      <p>先寫清楚需求與限制（需求文件、規則 PDF、JTBD），給 AI 的輸入品質決定輸出品質。</p>
+    </div>
+    <div class="method-card">
+      <div class="num">02</div>
+      <h4>拆解任務<span class="en">Decompose</span></h4>
+      <p>把大目標切成 AI 一次能做好的模組（schema → migration → 測試），逐步推進而非一次到位。</p>
+    </div>
+    <div class="method-card">
+      <div class="num">03</div>
+      <h4>迭代審查<span class="en">Iterate & Review</span></h4>
+      <p>每一版人工審查、提出領域約束讓 AI 修正。cellDB 的 v1→v6 演進就是這個循環的紀錄。</p>
+    </div>
+    <div class="method-card">
+      <div class="num">04</div>
+      <h4>驗證成果<span class="en">Verify</span></h4>
+      <p>用測試、模擬與實際 demo 驗證 AI 產出：約束測試、3M 次模擬、遠端 demo 都是驗證手段。</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>© 2026 Chris — Built in collaboration with Claude（這個網站本身也是 AI 協作的產物）</p>
+</footer>
+
+</body>
+</html>
