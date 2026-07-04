@@ -5,332 +5,455 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chris — AI 協作作品集 | AI Collaboration Portfolio</title>
 <style>
-  :root {
-    --bg: #0d1117;
-    --bg-card: #161b22;
-    --border: #30363d;
-    --text: #e6edf3;
-    --text-dim: #8b949e;
-    --accent: #58a6ff;
-    --accent2: #3fb950;
-    --tag-bg: #1f2937;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    line-height: 1.7;
-  }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+:root {
+--bg: #0d1117;
+--bg-card: #161b22;
+--border: #30363d;
+--text: #e6edf3;
+--text-dim: #8b949e;
+--accent: #58a6ff;
+--accent2: #3fb950;
+--tag-bg: #1f2937;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+line-height: 1.7;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-  header {
-    padding: 80px 0 60px;
-    text-align: center;
-    background: linear-gradient(180deg, #0d1117 0%, #101725 100%);
-    border-bottom: 1px solid var(--border);
-  }
-  header h1 { font-size: 2.4rem; margin-bottom: 8px; }
-  header h1 .en { color: var(--accent); }
-  header p.subtitle { color: var(--text-dim); font-size: 1.1rem; max-width: 720px; margin: 12px auto 0; }
-  .badge {
-    display: inline-block; margin-top: 20px; padding: 6px 16px;
-    border: 1px solid var(--accent); border-radius: 20px;
-    color: var(--accent); font-size: 0.9rem;
-  }
+header {
+padding: 80px 0 60px;
+text-align: center;
+background: linear-gradient(180deg, #0d1117 0%, #101725 100%);
+border-bottom: 1px solid var(--border);
+}
+header h1 { font-size: 2.4rem; margin-bottom: 8px; }
+header h1 .en { color: var(--accent); }
+header p.subtitle { color: var(--text-dim); font-size: 1.1rem; max-width: 720px; margin: 12px auto 0; }
+.badges { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.badge {
+display: inline-block; padding: 6px 16px;
+border: 1px solid var(--accent); border-radius: 20px;
+color: var(--accent); font-size: 0.9rem;
+}
+.badge.green { border-color: var(--accent2); color: var(--accent2); }
 
-  section.intro { padding: 48px 0 8px; }
-  section.intro h2, section.projects h2, section.method h2 {
-    font-size: 1.5rem; margin-bottom: 16px;
-    border-left: 4px solid var(--accent); padding-left: 12px;
-  }
-  section.intro p { color: var(--text-dim); max-width: 860px; }
+/* Skills strip */
+.skills-strip {
+padding: 24px 0 0;
+display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+}
+.skill-pill {
+background: var(--tag-bg); color: var(--text-dim);
+border: 1px solid var(--border); border-radius: 20px;
+padding: 4px 14px; font-size: 0.85rem; font-family: Consolas, monospace;
+}
+.skill-pill.hot { border-color: var(--accent); color: var(--accent); }
 
-  section.projects { padding: 40px 0; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-    gap: 24px;
-    margin-top: 24px;
-  }
-  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+section.intro { padding: 48px 0 8px; }
+section.intro h2, section.projects h2, section.method h2 {
+font-size: 1.5rem; margin-bottom: 16px;
+border-left: 4px solid var(--accent); padding-left: 12px;
+}
+section.intro p { color: var(--text-dim); max-width: 860px; }
 
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-    display: flex; flex-direction: column;
-    transition: border-color .2s, transform .2s;
-  }
-  .card:hover { border-color: var(--accent); transform: translateY(-3px); }
-  a.card { color: inherit; text-decoration: none; cursor: pointer; }
-  .repo-btn {
-    display: inline-block; margin-top: 12px; color: var(--accent);
-    font-size: 0.9rem; font-weight: 600;
-  }
-  .card:hover .repo-btn { text-decoration: underline; }
-  .card h3 { font-size: 1.25rem; margin-bottom: 2px; }
-  .card .en-title { color: var(--accent); font-size: 0.92rem; margin-bottom: 12px; }
-  .card p.desc { color: var(--text); margin-bottom: 14px; }
-  .tags { margin-bottom: 14px; }
-  .tag {
-    display: inline-block; background: var(--tag-bg); color: var(--accent);
-    border-radius: 6px; padding: 2px 10px; font-size: 0.8rem;
-    margin: 0 6px 6px 0; font-family: Consolas, monospace;
-  }
-  .block { margin-bottom: 12px; }
-  .block .label {
-    font-size: 0.82rem; font-weight: 700; letter-spacing: .05em;
-    color: var(--accent2); text-transform: uppercase; margin-bottom: 4px;
-  }
-  .block ul { list-style: none; }
-  .block ul li { color: var(--text-dim); font-size: 0.95rem; padding-left: 18px; position: relative; margin-bottom: 4px; }
-  .block ul li::before { content: "▸"; color: var(--accent); position: absolute; left: 0; }
-  .ai-block {
-    margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--border);
-  }
-  .ai-block .label { color: #d29922; }
-  .ai-block p { color: var(--text-dim); font-size: 0.95rem; }
+section.projects { padding: 40px 0; }
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+gap: 24px;
+margin-top: 24px;
+}
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
 
-  section.method {
-    padding: 48px 0 64px;
-    border-top: 1px solid var(--border);
-    margin-top: 24px;
-  }
-  .method-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px; margin-top: 24px;
-  }
-  .method-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 22px;
-  }
-  .method-card .num { color: var(--accent); font-size: 1.6rem; font-weight: 700; }
-  .method-card h4 { margin: 6px 0 8px; font-size: 1.05rem; }
-  .method-card h4 .en { display: block; color: var(--accent); font-size: 0.85rem; font-weight: 400; }
-  .method-card p { color: var(--text-dim); font-size: 0.92rem; }
+.card {
+background: var(--bg-card);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 28px;
+display: flex; flex-direction: column;
+transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-3px); }
+a.card { color: inherit; text-decoration: none; cursor: pointer; }
+.card.featured { border-color: #2d4a7a; }
+.card.featured:hover { border-color: var(--accent); }
+.featured-label {
+display: inline-block; margin-bottom: 10px;
+background: #1c2e4a; color: var(--accent);
+font-size: 0.75rem; font-weight: 700; letter-spacing: .06em;
+padding: 2px 10px; border-radius: 4px; text-transform: uppercase;
+}
+.repo-btn {
+display: inline-block; margin-top: 12px; color: var(--accent);
+font-size: 0.9rem; font-weight: 600;
+}
+.card:hover .repo-btn { text-decoration: underline; }
+.card h3 { font-size: 1.25rem; margin-bottom: 2px; }
+.card .en-title { color: var(--accent); font-size: 0.92rem; margin-bottom: 12px; }
+.card p.desc { color: var(--text); margin-bottom: 14px; }
+.tags { margin-bottom: 14px; }
+.tag {
+display: inline-block; background: var(--tag-bg); color: var(--accent);
+border-radius: 6px; padding: 2px 10px; font-size: 0.8rem;
+margin: 0 6px 6px 0; font-family: Consolas, monospace;
+}
+.block { margin-bottom: 12px; }
+.block .label {
+font-size: 0.82rem; font-weight: 700; letter-spacing: .05em;
+color: var(--accent2); text-transform: uppercase; margin-bottom: 4px;
+}
+.block ul { list-style: none; }
+.block ul li { color: var(--text-dim); font-size: 0.95rem; padding-left: 18px; position: relative; margin-bottom: 4px; }
+.block ul li::before { content: "▸"; color: var(--accent); position: absolute; left: 0; }
+.ai-block {
+margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--border);
+}
+.ai-block .label { color: #d29922; }
+.ai-block p { color: var(--text-dim); font-size: 0.95rem; }
 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0; text-align: center; color: var(--text-dim); font-size: 0.9rem;
-  }
-  footer a { color: var(--accent); text-decoration: none; }
+section.method {
+padding: 48px 0 64px;
+border-top: 1px solid var(--border);
+margin-top: 24px;
+}
+.method-grid {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 20px; margin-top: 24px;
+}
+.method-card {
+background: var(--bg-card); border: 1px solid var(--border);
+border-radius: 12px; padding: 22px;
+}
+.method-card .num { color: var(--accent); font-size: 1.6rem; font-weight: 700; }
+.method-card h4 { margin: 6px 0 8px; font-size: 1.05rem; }
+.method-card h4 .en { display: block; color: var(--accent); font-size: 0.85rem; font-weight: 400; }
+.method-card p { color: var(--text-dim); font-size: 0.92rem; }
+
+footer {
+border-top: 1px solid var(--border);
+padding: 32px 0; text-align: center; color: var(--text-dim); font-size: 0.9rem;
+}
+footer a { color: var(--accent); text-decoration: none; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="container">
-    <h1>Chris <span class="en">× AI</span> 協作作品集</h1>
-    <p class="subtitle">AI Collaboration Portfolio — 六個真實專案，展示如何引導 AI 完成資料庫設計、系統開發、電腦視覺與自動化產出。<br>
-    Six real-world projects demonstrating AI-assisted database design, system development, computer vision, and automated content generation.</p>
-    <span class="badge">CS Background · AI-Augmented Engineering</span>
-  </div>
+<div class="container">
+<h1>Chris <span class="en">× AI</span> 協作作品集</h1>
+<p class="subtitle">AI Collaboration Portfolio — 十個真實專案，涵蓋機器學習、後端 API、電腦視覺、平行運算與系統開發。<br>
+Ten real-world projects spanning machine learning, backend API, computer vision, parallel computing, and system development.</p>
+<div class="badges">
+<span class="badge">CS Background · AI-Augmented Engineering</span>
+<span class="badge green">ML · Backend · Computer Vision</span>
+</div>
+<div class="skills-strip">
+<span class="skill-pill hot">Python</span>
+<span class="skill-pill hot">PyTorch</span>
+<span class="skill-pill hot">TensorFlow</span>
+<span class="skill-pill hot">FastAPI</span>
+<span class="skill-pill hot">Docker</span>
+<span class="skill-pill hot">Redis</span>
+<span class="skill-pill hot">OpenCV</span>
+<span class="skill-pill hot">PostgreSQL</span>
+<span class="skill-pill">Linux</span>
+<span class="skill-pill">Git</span>
+<span class="skill-pill">SAM2</span>
+<span class="skill-pill">multiprocessing</span>
+</div>
+</div>
 </header>
 
 <div class="container">
 
 <section class="intro">
-  <h2>關於這份作品集 About</h2>
-  <p>這裡的每個專案都是「人類主導、AI 執行」的協作成果：我負責定義問題、拆解需求、審查與驗證，AI 負責加速實作與迭代。
-  重點不在成品本身，而在<strong>協作過程</strong>——每張卡片的「AI 協作方式」記錄了我如何引導 AI 工作。<br>
-  <em>Every project here is a human-led, AI-executed collaboration: I define the problem, decompose requirements, review and verify; AI accelerates implementation and iteration.</em></p>
+<h2>關於這份作品集 About</h2>
+<p>這裡的每個專案都是「人類主導、AI 執行」的協作成果：我負責定義問題、拆解需求、審查與驗證，AI 負責加速實作與迭代。
+重點不在成品本身，而在<strong>協作過程</strong>——每張卡片的「AI 協作方式」記錄了我如何引導 AI 工作。<br>
+<em>Every project here is a human-led, AI-executed collaboration: I define the problem, decompose requirements, review and verify; AI accelerates implementation and iteration.</em></p>
 </section>
 
 <section class="projects">
-  <h2>專案 Projects</h2>
-  <div class="grid">
+<h2>專案 Projects</h2>
+<div class="grid">
 
-    <a class="card" href="https://github.com/ct01157041/embryo-db" target="_blank" rel="noopener">
-      <h3>胚胎 AI 分析系統 — 資料庫設計</h3>
-      <div class="en-title">cellDB — Embryo AI Analysis Database</div>
-      <p class="desc">為胚胎影像 AI 分析系統設計的 PostgreSQL 資料庫，從需求文件到 v6 schema，完整保留六個版本的演進與遷移紀錄。</p>
-      <div class="tags">
-        <span class="tag">PostgreSQL</span><span class="tag">SQL Migration</span><span class="tag">Streamlit</span><span class="tag">Python</span><span class="tag">Cloudflare Tunnel</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>Schema 演進 v1 → v6，每版含 migration script 與 snapshot 備份</li>
-          <li>約束測試（constraint tests）驗證資料完整性</li>
-          <li>Streamlit 測試 UI ＋ Cloudflare Tunnel 遠端 demo</li>
-          <li>含 ER 圖、設計文件、前後端 API 資料規格</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>提供原始需求文件給 AI 產出 schema 草案，逐版審查並提出業務約束（如「一胚胎一任務」），引導 AI 撰寫 migration 與約束測試，形成可追溯的版本演進。</p>
-        <span class="repo-btn">View code on GitHub →</span>
-      </div>
-    </a>
+<!-- ★ NEW: TF CNN -->
+<a class="card featured" href="https://github.com/ct01157041/tf-cnn-cifar10" target="_blank" rel="noopener">
+<span class="featured-label">★ New</span>
+<h3>CIFAR-10 影像分類 — TensorFlow CNN</h3>
+<div class="en-title">tf-cnn-cifar10 — Image Classification with TensorFlow / Keras</div>
+<p class="desc">以 TensorFlow / Keras Functional API 設計三層 CNN，在 CIFAR-10 彩色影像資料集上訓練，達到約 78–80% 驗證準確率。</p>
+<div class="tags">
+<span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">CNN</span><span class="tag">CIFAR-10</span><span class="tag">Data Augmentation</span><span class="tag">Python</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>三層 Conv Block（32→64→128 filters）+ BatchNorm + Dropout</li>
+<li>Global Average Pooling 替代 Flatten，參數量減少 4×</li>
+<li>Cosine Decay LR + EarlyStopping + ModelCheckpoint callbacks</li>
+<li>tf.data pipeline：on-the-fly 資料增強（flip、rotation、zoom）</li>
+<li>evaluate.py 輸出 per-class accuracy 與 confusion matrix</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>對應先前 PyTorch HW4 的 TensorFlow 重實作版本，用以驗證跨框架的模型設計能力；架構設計、訓練策略與評估邏輯均由人工主導。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-    <a class="card" href="https://github.com/ct01157041/schedule-assistant" target="_blank" rel="noopener">
-      <h3>行程顧問 Telegram Bot</h3>
-      <div class="en-title">Schedule Assistant — Personal Scheduling Advisor</div>
-      <p class="desc">了解使用者行程的私人顧問：整合 Google／iCloud 行事曆與學校課表，透過 Telegram 提供主動晨間簡報與隨時查詢。</p>
-      <div class="tags">
-        <span class="tag">Python</span><span class="tag">Telegram Bot API</span><span class="tag">Google Calendar API</span><span class="tag">LLM Integration</span><span class="tag">iCloud/ICS</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>以 JTBD（Jobs to be Done）方法定義核心痛點，README 記錄功能取捨</li>
-          <li>多來源整合：行事曆 × 天氣 × 新聞 × 定位</li>
-          <li>LLM 驅動的自然語言行程查詢與衝突提醒</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>先與 AI 進行產品腦力激盪、砍掉偽需求（解謎鬧鐘、讀書計畫），再分模組（calendar source、LLM、news）引導 AI 實作，自己負責整合測試與 OAuth 串接。</p>
-        <span class="repo-btn">View code on GitHub →</span>
-      </div>
-    </a>
+<!-- ★ NEW: celldb-api -->
+<a class="card featured" href="https://github.com/ct01157041/celldb-api" target="_blank" rel="noopener">
+<span class="featured-label">★ New</span>
+<h3>胚胎 AI 分析系統 — REST API 後端</h3>
+<div class="en-title">celldb-api — FastAPI + PostgreSQL + Redis + Docker</div>
+<p class="desc">將 cellDB 資料庫設計延伸為完整的 RESTful API 後端服務：FastAPI 處理請求、Redis 做讀取快取、PostgreSQL 持久化、Docker Compose 一鍵部署。</p>
+<div class="tags">
+<span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">SQLAlchemy</span><span class="tag">Python</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>異步 SQLAlchemy 2.0 + asyncpg，全程 async/await</li>
+<li>Redis TTL cache：讀先查快取，寫入時 pattern invalidation</li>
+<li>Multi-stage Dockerfile（builder + runtime），最小化 image 大小</li>
+<li>Docker Compose 三服務（API + PostgreSQL + Redis）健康檢查</li>
+<li>業務約束：一胚胎一任務，應用層 + DB 雙重保障（409 + UNIQUE）</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>以現有 cellDB schema 為基礎，引導 AI 逐層實作 FastAPI router、Redis cache helper、Docker 配置，人工審查 async 邏輯正確性與 cache invalidation 策略。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-    <a class="card" href="https://github.com/ct01157041/slot-deck-simulation" target="_blank" rel="noopener">
-      <h3>老虎機牌堆系統實驗</h3>
-      <div class="en-title">datapress — Slot Deck System Simulation & Benchmark</div>
-      <p class="desc">研究老虎機「牌堆制」機率系統：以 Python 建模、進行三百萬次規模的模擬與效能 benchmark，產出完整實驗報告。</p>
-      <div class="tags">
-        <span class="tag">Python</span><span class="tag">Monte Carlo Simulation</span><span class="tag">Benchmark</span><span class="tag">Data Analysis</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>deck builder ＋ simulation server 架構，支援 3M 次模擬實驗</li>
-          <li>兩版牌堆設計（v1／v2）對照實驗</li>
-          <li>成果整理為正式實驗報告（DOCX／PDF）</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>由 AI 從遊戲規則文件抽取機率模型，引導 AI 撰寫模擬器與 benchmark 腳本，人工驗證統計結果合理性後，再與 AI 共同撰寫實驗報告。</p>
-        <span class="repo-btn">View code on GitHub →</span>
-      </div>
-    </a>
+<!-- ★ NEW: datapress-parallel -->
+<a class="card featured" href="https://github.com/ct01157041/datapress-parallel" target="_blank" rel="noopener">
+<span class="featured-label">★ New</span>
+<h3>平行 Monte Carlo 模擬 — multiprocessing 加速</h3>
+<div class="en-title">datapress-parallel — Parallel Slot Deck Simulation & Speedup Benchmark</div>
+<p class="desc">以 Python multiprocessing.Pool 重構原本的 datapress 單程序模擬器，在 3,000,000 次模擬規模下量化平行加速比，並驗證統計結果一致性。</p>
+<div class="tags">
+<span class="tag">Python</span><span class="tag">multiprocessing</span><span class="tag">Monte Carlo</span><span class="tag">Benchmark</span><span class="tag">Parallel Computing</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>Pool.map() 分割工作到 N 個 worker，各自獨立 seed 確保可重現</li>
+<li>8 cores 實測約 6x speedup（CPU-bound，接近線性擴展）</li>
+<li>Serial vs Parallel RTP 誤差 &lt;0.05%，統計正確性驗證通過</li>
+<li>解說 GIL 限制：為何 CPU-bound 任務需 multiprocessing 而非 threading</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>重構原有 datapress 模擬器，設計時需確保 run_batch() 為純函數（picklable）以相容 multiprocessing；benchmark 腳本與 README 由人工審查加速比合理性。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-    <a class="card" href="https://github.com/ct01157041/machine-vision-coursework" target="_blank" rel="noopener">
-      <h3>機器視覺課程專案 HW1–HW4</h3>
-      <div class="en-title">Machine Vision — OpenCV & Deep Learning Coursework</div>
-      <p class="desc">四個遞進式電腦視覺專案：從影像處理 pipeline、ArUco 相機校正與 AR 姿態估計，到 PyTorch 影像分類。</p>
-      <div class="tags">
-        <span class="tag">OpenCV</span><span class="tag">PyTorch</span><span class="tag">Camera Calibration</span><span class="tag">AR / Pose Estimation</span><span class="tag">Jupyter</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>HW1：即時視訊處理（模糊、邊緣、直方圖）＋自動字幕旁白合成</li>
-          <li>HW3：ArUco／ChArUco 偵測、相機校正、AR 物件疊加</li>
-          <li>HW4：PyTorch CNN 雲類影像辨識（CCSN dataset）</li>
-          <li>以腳本自動產生格狀對照影片與報告</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>用 AI 快速搭建 OpenCV pipeline 原型並 debug 參數，報告產生流程（gen_report）也交由 AI 腳本化，將重複性作業自動化、專注於演算法理解。</p>
-        <span class="repo-btn">View code on GitHub →</span>
-      </div>
-    </a>
+<!-- Existing: machine-vision -->
+<a class="card" href="https://github.com/ct01157041/machine-vision-coursework" target="_blank" rel="noopener">
+<h3>機器視覺課程專案 HW1–HW4</h3>
+<div class="en-title">Machine Vision — OpenCV & Deep Learning Coursework</div>
+<p class="desc">四個遞進式電腦視覺專案：從影像處理 pipeline、ArUco 相機校正與 AR 姿態估計，到 PyTorch 影像分類。</p>
+<div class="tags">
+<span class="tag">OpenCV</span><span class="tag">PyTorch</span><span class="tag">Camera Calibration</span><span class="tag">AR / Pose Estimation</span><span class="tag">Jupyter</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>HW1：即時視訊處理（模糊、邊緣、直方圖）＋自動字幕旁白合成</li>
+<li>HW3：ArUco／ChArUco 偵測、相機校正、AR 物件疊加</li>
+<li>HW4：PyTorch CNN 雲類影像辨識（CCSN dataset）</li>
+<li>以腳本自動產生格狀對照影片與報告</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>用 AI 快速搭建 OpenCV pipeline 原型並 debug 參數，報告產生流程（gen_report）也交由 AI 腳本化，將重複性作業自動化、專注於演算法理解。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-    <a class="card" href="https://github.com/ct01157041/slides-as-code-wifi-sensing" target="_blank" rel="noopener">
-      <h3>802.11bf Wi-Fi Sensing 技術簡報</h3>
-      <div class="en-title">WLAN — Programmatic Technical Presentation</div>
-      <p class="desc">無線區域網路課程的技術簡報：不用 PowerPoint 手刻，而是以 pptxgenjs 程式化產生整份 16:9 專業簡報。</p>
-      <div class="tags">
-        <span class="tag">Node.js</span><span class="tag">pptxgenjs</span><span class="tag">802.11bf</span><span class="tag">Slides as Code</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>整份簡報以 JavaScript 描述：色彩系統、陰影、版面皆程式定義</li>
-          <li>從論文（Network as a Sensor）消化出技術內容</li>
-          <li>「簡報即程式碼」：可版本控制、可快速改版</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>讓 AI 閱讀論文與課程 PDF 萃取重點，再引導 AI 以 pptxgenjs 把內容轉成設計一致的簡報程式碼，人工把關技術正確性與視覺品質。</p>
-        <span class="repo-btn">View code on GitHub →</span>
-      </div>
-    </a>
+<!-- Existing: cellDB -->
+<a class="card" href="https://github.com/ct01157041/embryo-db" target="_blank" rel="noopener">
+<h3>胚胎 AI 分析系統 — 資料庫設計</h3>
+<div class="en-title">cellDB — Embryo AI Analysis Database</div>
+<p class="desc">為胚胎影像 AI 分析系統設計的 PostgreSQL 資料庫，從需求文件到 v6 schema，完整保留六個版本的演進與遷移紀錄。REST API 延伸版本見 celldb-api。</p>
+<div class="tags">
+<span class="tag">PostgreSQL</span><span class="tag">SQL Migration</span><span class="tag">Streamlit</span><span class="tag">Python</span><span class="tag">Cloudflare Tunnel</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>Schema 演進 v1 → v6，每版含 migration script 與 snapshot 備份</li>
+<li>約束測試（constraint tests）驗證資料完整性</li>
+<li>Streamlit 測試 UI ＋ Cloudflare Tunnel 遠端 demo</li>
+<li>含 ER 圖、設計文件、前後端 API 資料規格</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>提供原始需求文件給 AI 產出 schema 草案，逐版審查並提出業務約束（如「一胚胎一任務」），引導 AI 撰寫 migration 與約束測試，形成可追溯的版本演進。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-    <div class="card">
-      <h3>Java 桌面應用系統</h3>
-      <div class="en-title">Java Desktop App — Photo Editor & User Auth</div>
-      <p class="desc">以 Java Swing 開發的桌面應用程式，整合使用者登入／註冊系統（MySQL 資料庫）、影像編輯器（加字、縮放、儲存）與 GIF 動畫生成功能。</p>
-      <div class="tags">
-        <span class="tag">Java</span><span class="tag">Swing GUI</span><span class="tag">MySQL</span><span class="tag">JDBC</span><span class="tag">OpenCV</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>LoginForm／RegisterForm 串接 MySQL，使用 PreparedStatement 防 SQL Injection</li>
-          <li>PhotoEditor：上傳圖片、加文字浮水印、縮放、儲存</li>
-          <li>GIF 生成器：多張影像合成動態 GIF（AnimatedGifEncoder）</li>
-          <li>RemoveBackground：整合 OpenCV 影像處理進行背景移除</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>以 AI 加速 Swing 元件配置與 JDBC 連線模板的搭建，自行設計系統架構與資料庫 schema，並審查 SQL 查詢的安全性。</p>
-      </div>
-    </div>
+<!-- Existing: schedule-assistant -->
+<a class="card" href="https://github.com/ct01157041/schedule-assistant" target="_blank" rel="noopener">
+<h3>行程顧問 Telegram Bot</h3>
+<div class="en-title">Schedule Assistant — Personal Scheduling Advisor</div>
+<p class="desc">了解使用者行程的私人顧問：整合 Google／iCloud 行事曆與學校課表，透過 Telegram 提供主動晨間簡報與隨時查詢。</p>
+<div class="tags">
+<span class="tag">Python</span><span class="tag">Telegram Bot API</span><span class="tag">Google Calendar API</span><span class="tag">LLM Integration</span><span class="tag">iCloud/ICS</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>以 JTBD（Jobs to be Done）方法定義核心痛點，README 記錄功能取捨</li>
+<li>多來源整合：行事曆 × 天氣 × 新聞 × 定位</li>
+<li>LLM 驅動的自然語言行程查詢與衝突提醒</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>先與 AI 進行產品腦力激盪、砍掉偽需求（解謎鬧鐘、讀書計畫），再分模組（calendar source、LLM、news）引導 AI 實作，自己負責整合測試與 OAuth 串接。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-    <a class="card" href="https://github.com/ct01157041/arena-game-demo" target="_blank" rel="noopener">
-      <h3>競技場遊戲 Demo</h3>
-      <div class="en-title">Arena Game Demo — Cocos Creator</div>
-      <p class="desc">依據競技場規則文件，在 Cocos Creator 中以 TypeScript 實作的遊戲 demo，含 UI 控制與互動元件。</p>
-      <div class="tags">
-        <span class="tag">Cocos Creator</span><span class="tag">TypeScript</span><span class="tag">Game Dev</span><span class="tag">UI Components</span>
-      </div>
-      <div class="block">
-        <div class="label">Highlights 亮點</div>
-        <ul>
-          <li>從規則 PDF 轉化為可玩的遊戲邏輯（ArenaDemo）</li>
-          <li>UI 控制器與 hover 縮放按鈕等可重用元件</li>
-          <li>完整遊戲引擎專案結構（scene、prefab、assets）</li>
-        </ul>
-      </div>
-      <div class="ai-block">
-        <div class="label">AI 協作方式 AI Collaboration</div>
-        <p>提供規則文件讓 AI 規劃遊戲邏輯與元件拆分，在不熟悉的引擎（Cocos Creator）上靠 AI 加速學習曲線，快速做出可動的 demo。</p>
-        <span class="repo-btn">View code on GitHub →</span>
-      </div>
-    </a>
+<!-- Existing: datapress original -->
+<a class="card" href="https://github.com/ct01157041/slot-deck-simulation" target="_blank" rel="noopener">
+<h3>老虎機牌堆系統實驗</h3>
+<div class="en-title">datapress — Slot Deck System Simulation & Benchmark</div>
+<p class="desc">研究老虎機「牌堆制」機率系統：以 Python 建模、進行三百萬次規模的模擬與效能 benchmark，產出完整實驗報告。平行加速版本見 datapress-parallel。</p>
+<div class="tags">
+<span class="tag">Python</span><span class="tag">Monte Carlo Simulation</span><span class="tag">Benchmark</span><span class="tag">Data Analysis</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>deck builder ＋ simulation server 架構，支援 3M 次模擬實驗</li>
+<li>兩版牌堆設計（v1／v2）對照實驗</li>
+<li>成果整理為正式實驗報告（DOCX／PDF）</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>由 AI 從遊戲規則文件抽取機率模型，引導 AI 撰寫模擬器與 benchmark 腳本，人工驗證統計結果合理性後，再與 AI 共同撰寫實驗報告。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
 
-  </div>
+<!-- Existing: Wi-Fi sensing -->
+<a class="card" href="https://github.com/ct01157041/slides-as-code-wifi-sensing" target="_blank" rel="noopener">
+<h3>802.11bf Wi-Fi Sensing 技術簡報</h3>
+<div class="en-title">WLAN — Programmatic Technical Presentation</div>
+<p class="desc">無線區域網路課程的技術簡報：不用 PowerPoint 手刻，而是以 pptxgenjs 程式化產生整份 16:9 專業簡報。</p>
+<div class="tags">
+<span class="tag">Node.js</span><span class="tag">pptxgenjs</span><span class="tag">802.11bf</span><span class="tag">Slides as Code</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>整份簡報以 JavaScript 描述：色彩系統、陰影、版面皆程式定義</li>
+<li>從論文（Network as a Sensor）消化出技術內容</li>
+<li>「簡報即程式碼」：可版本控制、可快速改版</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>讓 AI 閱讀論文與課程 PDF 萃取重點，再引導 AI 以 pptxgenjs 把內容轉成設計一致的簡報程式碼，人工把關技術正確性與視覺品質。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
+
+<!-- Existing: Java -->
+<div class="card">
+<h3>Java 桌面應用系統</h3>
+<div class="en-title">Java Desktop App — Photo Editor & User Auth</div>
+<p class="desc">以 Java Swing 開發的桌面應用程式，整合使用者登入／註冊系統（MySQL 資料庫）、影像編輯器（加字、縮放、儲存）與 GIF 動畫生成功能。</p>
+<div class="tags">
+<span class="tag">Java</span><span class="tag">Swing GUI</span><span class="tag">MySQL</span><span class="tag">JDBC</span><span class="tag">OpenCV</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>LoginForm／RegisterForm 串接 MySQL，使用 PreparedStatement 防 SQL Injection</li>
+<li>PhotoEditor：上傳圖片、加文字浮水印、縮放、儲存</li>
+<li>GIF 生成器：多張影像合成動態 GIF（AnimatedGifEncoder）</li>
+<li>RemoveBackground：整合 OpenCV 影像處理進行背景移除</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>以 AI 加速 Swing 元件配置與 JDBC 連線模板的搭建，自行設計系統架構與資料庫 schema，並審查 SQL 查詢的安全性。</p>
+</div>
+</div>
+
+<!-- Existing: Arena -->
+<a class="card" href="https://github.com/ct01157041/arena-game-demo" target="_blank" rel="noopener">
+<h3>競技場遊戲 Demo</h3>
+<div class="en-title">Arena Game Demo — Cocos Creator</div>
+<p class="desc">依據競技場規則文件，在 Cocos Creator 中以 TypeScript 實作的遊戲 demo，含 UI 控制與互動元件。</p>
+<div class="tags">
+<span class="tag">Cocos Creator</span><span class="tag">TypeScript</span><span class="tag">Game Dev</span><span class="tag">UI Components</span>
+</div>
+<div class="block">
+<div class="label">Highlights 亮點</div>
+<ul>
+<li>從規則 PDF 轉化為可玩的遊戲邏輯（ArenaDemo）</li>
+<li>UI 控制器與 hover 縮放按鈕等可重用元件</li>
+<li>完整遊戲引擎專案結構（scene、prefab、assets）</li>
+</ul>
+</div>
+<div class="ai-block">
+<div class="label">AI 協作方式 AI Collaboration</div>
+<p>提供規則文件讓 AI 規劃遊戲邏輯與元件拆分，在不熟悉的引擎（Cocos Creator）上靠 AI 加速學習曲線，快速做出可動的 demo。</p>
+<span class="repo-btn">View code on GitHub →</span>
+</div>
+</a>
+
+</div>
 </section>
 
 <section class="method">
-  <h2>我的 AI 協作方法論 My AI Collaboration Method</h2>
-  <div class="method-grid">
-    <div class="method-card">
-      <div class="num">01</div>
-      <h4>定義問題<span class="en">Define</span></h4>
-      <p>先寫清楚需求與限制（需求文件、規則 PDF、JTBD），給 AI 的輸入品質決定輸出品質。</p>
-    </div>
-    <div class="method-card">
-      <div class="num">02</div>
-      <h4>拆解任務<span class="en">Decompose</span></h4>
-      <p>把大目標切成 AI 一次能做好的模組（schema → migration → 測試），逐步推進而非一次到位。</p>
-    </div>
-    <div class="method-card">
-      <div class="num">03</div>
-      <h4>迭代審查<span class="en">Iterate & Review</span></h4>
-      <p>每一版人工審查、提出領域約束讓 AI 修正。cellDB 的 v1→v6 演進就是這個循環的紀錄。</p>
-    </div>
-    <div class="method-card">
-      <div class="num">04</div>
-      <h4>驗證成果<span class="en">Verify</span></h4>
-      <p>用測試、模擬與實際 demo 驗證 AI 產出：約束測試、3M 次模擬、遠端 demo 都是驗證手段。</p>
-    </div>
-  </div>
+<h2>我的 AI 協作方法論 My AI Collaboration Method</h2>
+<div class="method-grid">
+<div class="method-card">
+<div class="num">01</div>
+<h4>定義問題<span class="en">Define</span></h4>
+<p>先寫清楚需求與限制（需求文件、規則 PDF、JTBD），給 AI 的輸入品質決定輸出品質。</p>
+</div>
+<div class="method-card">
+<div class="num">02</div>
+<h4>拆解任務<span class="en">Decompose</span></h4>
+<p>把大目標切成 AI 一次能做好的模組（schema → migration → 測試），逐步推進而非一次到位。</p>
+</div>
+<div class="method-card">
+<div class="num">03</div>
+<h4>迭代審查<span class="en">Iterate & Review</span></h4>
+<p>每一版人工審查、提出領域約束讓 AI 修正。cellDB 的 v1→v6 演進就是這個循環的紀錄。</p>
+</div>
+<div class="method-card">
+<div class="num">04</div>
+<h4>驗證成果<span class="en">Verify</span></h4>
+<p>用測試、模擬與實際 demo 驗證 AI 產出：約束測試、3M 次模擬、遠端 demo 都是驗證手段。</p>
+</div>
+</div>
 </section>
 
 </div>
 
 <footer>
-  <p>© 2026 Chris — Built in collaboration with Claude（這個網站本身也是 AI 協作的產物）</p>
+<p>© 2026 Chris — Built in collaboration with Claude（這個網站本身也是 AI 協作的產物）</p>
 </footer>
 
 </body>
