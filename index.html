@@ -148,6 +148,40 @@ footer a { color: var(--accent); text-decoration: none; }
   <h2><span class="t-zh">專案</span><span class="t-en">Projects</span></h2>
   <div class="grid">
 
+    <!-- 畢業專題 -->
+    <a class="card featured" href="https://github.com/ct01157041" target="_blank" rel="noopener">
+      <span class="featured-label">⭐ 畢業專題</span>
+      <h3>
+        <span class="t-zh">2D 影像轉 3D 模型互動系統</span>
+        <span class="t-en">2D-to-3D Interactive Reconstruction System</span>
+      </h3>
+      <p class="desc">
+        <span class="t-zh">以單張 2D 影像為輸入，整合 SAM2 影像分割與 Wonder3D++ 生成式建模，透過 FastAPI + Next.js 實現端對端的 3D Mesh 自動重建系統。</span>
+        <span class="t-en">Single-image 3D reconstruction: integrates SAM2 segmentation and Wonder3D++ generative modeling into a full-stack end-to-end pipeline via FastAPI + Next.js.</span>
+      </p>
+      <div class="tags">
+        <span class="tag">SAM2</span><span class="tag">Wonder3D++</span><span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">PyTorch</span><span class="tag">Computer Vision</span>
+      </div>
+      <div class="block">
+        <div class="label"><span class="t-zh">亮點</span><span class="t-en">Highlights</span></div>
+        <ul>
+          <li><span class="t-zh">SAM2 互動式分割：Canvas 點選／框選提示，即時去背預覽</span><span class="t-en">SAM2 interactive segmentation: canvas point/box prompts with live mask preview</span></li>
+          <li><span class="t-zh">Wonder3D++ 跨域擴散：單張影像 → 多視角彩色圖 + 法線貼圖 + GLB 網格</span><span class="t-en">Wonder3D++ cross-domain diffusion: single image → multi-view RGB + normal maps + GLB mesh</span></li>
+          <li><span class="t-zh">FastAPI Gateway 串接兩大推論模型，/predict + /generate 雙端點設計</span><span class="t-en">FastAPI gateway wiring two inference models; /predict and /generate endpoint design</span></li>
+          <li><span class="t-zh">Poisson Surface Reconstruction + 可微渲染優化幾何，解決 Janus Problem</span><span class="t-en">Poisson Surface Reconstruction + differentiable rendering optimization, mitigating Janus Problem</span></li>
+          <li><span class="t-zh">前後端分離：Next.js 互動標註 + model-viewer 3D 檢視 + GLB 下載</span><span class="t-en">Decoupled frontend: Next.js annotation UI + model-viewer 3D viewer + GLB download</span></li>
+        </ul>
+      </div>
+      <div class="ai-block">
+        <div class="label"><span class="t-zh">AI 協作方式</span><span class="t-en">AI Collaboration</span></div>
+        <p>
+          <span class="t-zh">負責系統架構設計與 FastAPI 後端實作，引導 AI 搭建前後端溝通介面與靜態資源回傳邏輯；核心模型整合（SAM2、Wonder3D++）與 API 設計均由人工主導並驗證正確性。</span>
+          <span class="t-en">Responsible for system architecture and FastAPI backend implementation. AI assisted in scaffolding frontend-backend communication and static resource serving; core model integration (SAM2, Wonder3D++) and API design were human-directed and verified.</span>
+        </p>
+        <span class="repo-btn">View on GitHub →</span>
+      </div>
+    </a>
+
     <!-- tf-cnn-cifar10 -->
     <a class="card featured" href="https://github.com/ct01157041/tf-cnn-cifar10" target="_blank" rel="noopener">
       <span class="featured-label">★ New</span>
